@@ -14,16 +14,16 @@ export function compound(principal, payment, paymentsPerYear, rate, compoundsPer
   const grownPrincipal = principal * principalGrowthFactor;
 
   const paymentGrowthFactor = (1 + decimalRate / compoundsPerYear) ** (compoundsPerYear / paymentsPerYear) - 1;
-  const grownPayments = payment * ((1 + paymentGrowthFactor) ** (paymentsPerYear * years) - 1) / paymentGrowthFactor;
+  const grownPayments = (payment * ((1 + paymentGrowthFactor) ** (paymentsPerYear * years) - 1)) / paymentGrowthFactor;
 
   const balance = grownPrincipal + grownPayments;
-  const contributions = principal + (payment * paymentsPerYear * years);
+  const contributions = principal + payment * paymentsPerYear * years;
 
   return {
     balance: balance,
     contributions: contributions,
-    interest: balance - contributions
-  }
+    interest: balance - contributions,
+  };
 }
 
 // TODO pick a graphing solution and data structure.
