@@ -22,7 +22,7 @@ export function compound(principal, payment, paymentsPerYear, rate, compoundsPer
   return {
     balance: balance,
     contributions: contributions,
-    interest: balance - contributions,
+    interest: balance - contributions
   };
 }
 
